@@ -1,38 +1,218 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+  
+.app {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app h1 {
   text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Overview component */
+.overview {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #e8f0fe;
+  border-radius: 6px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.overview h2 {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.overview p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.overview .deadline-warning {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.overview .deadline-overdue {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.overview .deadline-completed {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+/* GoalForm component */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+form h2 {
+  color: #34495e;
+  font-size: 1.5rem;
+}
+
+form input,
+form select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+form button {
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #104466;
+}
+
+.error {
+  color: #c0392b;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* DepositForm component */
+.deposit-form {
+  margin-bottom: 20px;
+}
+
+.deposit-form select,
+.deposit-form input {
+  margin-bottom: 10px;
+}
+
+/* GoalList component */
+.goal-list {
+  margin-bottom: 20px;
+}
+
+.goal-list h2 {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* GoalItem component */
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+}
+
+.goal-item.completed {
+  border-left-color: #27ae60;
+}
+
+.goal-item.warning {
+  border-left-color: #e67e22;
+}
+
+.goal-item.overdue {
+  border-left-color: #c0392b;
+}
+
+.goal-item p {
+  font-size: 1rem;
+}
+
+.goal-item button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.goal-item button.edit {
+  background-color: #f1c40f;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.goal-item button.edit:hover {
+  background-color: #d4ac0d;
+}
+
+.goal-item button.delete {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+.goal-item button.delete:hover {
+  background-color: #a93226;
+}
+
+
+@media (max-width: 600px) {
+  .app {
+    margin: 10px;
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .app h1 {
+    font-size: 1.5rem;
   }
-}
 
-.card {
-  padding: 2em;
+  .overview h2,
+  .goal-list h2,
+  form h2 {
+    font-size: 1.2rem;
+  }
+
+  .goal-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }
