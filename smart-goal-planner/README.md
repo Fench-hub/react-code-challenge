@@ -1,12 +1,54 @@
-# React + Vite
+Smart Goal Planner
+   A React app to manage financial goals with create, read, update, delete (CRUD) operations, progress tracking, and deposits.
+Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Add, edit, and delete savings goals.
+Track progress with color-coded bars (green for completed, orange for nearing deadline, red for overdue).
+Deposit funds to goals.
+View total goals, saved amount, and deadlines.
 
-Currently, two official plugins are available:
+Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ git@github.com:Fench-hub/smart-goal-planner.git
+ smart-goal-planner
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:npm install
+
+
+Start JSON Server:node server.cjs
+
+
+Start Vite:npm run dev
+
+
+Open http://localhost:5173.
+
+Usage
+
+Add/edit/delete goals (e.g., "vacation": $49500/$50000).
+Deposit funds (e.g., $500 to "vacation").
+View progress and overview (7 goals, $231,500 saved).
+
+Project Structure
+
+src/App.jsx: Main component with state management and fetch logic.
+src/components/GoalItem.jsx: Renders individual goals with edit/delete functionality.
+src/components/GoalForm.jsx: Form for adding new goals.
+src/components/DepositForm.jsx: Form for depositing funds.
+src/components/GoalList.jsx: Lists all goals.
+src/components/Overview.jsx: Displays summary statistics.
+src/App.css: Styles for progress bars, responsive design, and components.
+server.cjs: Runs json-server with CORS for db.json.
+db.json: Stores goal data (7 goals, e.g., "Relocation," "Emergency Fund").
+package.json: Defines dependencies and scripts.
+
+License:
+It's for educational purposes
+
+Author
+
+GitHub: Fench-hub
+Email: gelona.jepchumba@student.moringaschool.com
+
+

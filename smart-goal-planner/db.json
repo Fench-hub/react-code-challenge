@@ -22,7 +22,7 @@
       "id": "3",
       "name": "vacation",
       "targetAmount": 50000,
-      "savedAmount": 49500,
+      "savedAmount": 49520,
       "category": "Travel",
       "deadline": "2025-08-20",
       "createdAt": "2025-03-10"
@@ -57,11 +57,20 @@
     {
       "id": "7",
       "name": "shopping",
-      "targetAmount":15000,
+      "targetAmount": 15000,
       "savedAmount": 15000,
       "category": "Shopping",
       "deadline": "2025-08-10",
       "createdAt": "2025-07-01"
+    },
+    {
+      "name": "school",
+      "targetAmount": "2500",
+      "category": "Education",
+      "deadline": "2025-07-21",
+      "id": "1753126768685",
+      "savedAmount": 20,
+      "createdAt": "2025-07-21"
     }
-]
+  ]
 }

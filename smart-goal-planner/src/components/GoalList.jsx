@@ -1,9 +1,8 @@
-import React from 'react';
-import GoalItem from './GoalItem';
+import GoalItem from './GoalItem.jsx';
 
 const GoalList = ({ goals, updateGoal, deleteGoal }) => {
   return (
-    <div>
+    <div className="goal-list">
       <h2>Your Goals</h2>
       {goals.length === 0 ? (
         <p>No goals yet. Add one above!</p>

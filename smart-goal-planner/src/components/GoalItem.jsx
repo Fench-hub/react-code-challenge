@@ -1,53 +1,65 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const GoalItem = ({ goal, updateGoal, deleteGoal }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({
+  const [editData, setEditData] = useState({
     name: goal.name,
     targetAmount: goal.targetAmount,
     category: goal.category,
     deadline: goal.deadline,
   });
 
-  const progress = (goal.savedAmount / goal.targetAmount) * 100;
-  const remaining = goal.targetAmount - goal.savedAmount;
-  const today = new Date('2025-07-20');
-  const deadlineDate = new Date(goal.deadline);
-  const daysLeft = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
-  const isOverdue = daysLeft < 0 && remaining > 0;
-  const isWarning = daysLeft <= 30 && daysLeft >= 0 && remaining > 0;
+  const getStatus = () => {
+    if (goal.savedAmount >= goal.targetAmount) return 'completed';
+    const today = new Date();
+    const deadline = new Date(goal.deadline);
+    const diffTime = deadline - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays < 0) return 'overdue';
+    if (diffDays <= 30) return 'warning';
+    return '';
+  };
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
     updateGoal(goal.id, {
-      name: formData.name,
-      targetAmount: parseFloat(formData.targetAmount),
-      category: formData.category,
-      deadline: formData.deadline,
+      name: editData.name,
+      targetAmount: parseFloat(editData.targetAmount),
+      category: editData.category,
+      deadline: editData.deadline,
     });
     setIsEditing(false);
   };
 
+  const handleDelete = () => {
+    deleteGoal(goal.id);
+  };
+
+  const progress = (goal.savedAmount / goal.targetAmount) * 100;
+
   return (
-    <div className="goal-item">
+    <div className={`goal-item ${getStatus()}`}>
       {isEditing ? (
-        <form onSubmit={handleUpdate}>
+        <>
           <input
             type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
+            value={editData.name}
+            onChange={(e) => setEditData({ ...editData, name: e.target.value })}
+            aria-label="Goal Name"
           />
           <input
             type="number"
-            value={formData.targetAmount}
-            onChange={(e) => setFormData({ ...formData, targetAmount: e.target.value })}
-            required
-            min="1"
+            value={editData.targetAmount}
+            onChange={(e) => setEditData({ ...editData, targetAmount: e.target.value })}
+            aria-label="Target Amount"
           />
           <select
-            value={formData.category}
-            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+            value={editData.category}
+            onChange={(e) => setEditData({ ...editData, category: e.target.value })}
+            aria-label="Category"
           >
             <option value="Travel">Travel</option>
             <option value="Emergency">Emergency</option>
@@ -55,37 +67,32 @@ const GoalItem = ({ goal, updateGoal, deleteGoal }) => {
             <option value="Vehicle">Vehicle</option>
             <option value="Education">Education</option>
             <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
           </select>
           <input
             type="date"
-            value={formData.deadline}
-            onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-            required
+            value={editData.deadline}
+            onChange={(e) => setEditData({ ...editData, deadline: e.target.value })}
+            aria-label="Deadline"
           />
-          <button type="submit">Save</button>
-          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
-        </form>
+          <button onClick={handleSave} aria-label="Save Goal">Save</button>
+          <button onClick={() => setIsEditing(false)} aria-label="Cancel Edit">Cancel</button>
+        </>
       ) : (
         <>
-          <h3>{goal.name}</h3>
-          <p>Category: {goal.category}</p>
-          <p>Target: ${goal.targetAmount.toFixed(2)}</p>
-          <p>Saved: ${goal.savedAmount.toFixed(2)}</p>
-          <p>Remaining: ${remaining.toFixed(2)}</p>
-          <p>Deadline: {goal.deadline}</p>
-          {goal.savedAmount >= goal.targetAmount ? (
-            <p style={{ color: '#28a745', fontWeight: 'bold' }}>Completed!</p>
-          ) : (
-            <>
-              {isOverdue && <p className="overdue">Overdue!</p>}
-              {isWarning && <p className="warning">Less than 30 days left!</p>}
-            </>
-          )}
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${progress}%` }}></div>
+          <div>
+            <p>
+              {goal.name}: ${goal.savedAmount}/${goal.targetAmount} ({goal.category}, Due: {goal.deadline})
+            </p>
+            <p>Remaining: ${(goal.targetAmount - goal.savedAmount).toFixed(2)}</p>
+            <div className="progress-bar">
+              <div className="progress" style={{ width: `${progress}%` }}></div>
+            </div>
           </div>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => deleteGoal(goal.id)}>Delete</button>
+          <div>
+            <button className="edit" onClick={handleEdit} aria-label="Edit Goal">Edit</button>
+            <button className="delete" onClick={handleDelete} aria-label="Delete Goal">Delete</button>
+          </div>
         </>
       )}
     </div>
