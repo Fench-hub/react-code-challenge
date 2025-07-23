@@ -15,7 +15,7 @@ const App = () => {
 
   const fetchGoals = async () => {
     try {
-      const response = await fetch('https://react-code-challen.vercel.app/goals', {
+      const response = await fetch('http://localhost:3000/goals', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       });
@@ -31,7 +31,7 @@ const App = () => {
 
   const addGoal = async (goal) => {
     try {
-      const response = await fetch('https://react-code-challen.vercel.app/goals', {
+      const response = await fetch('http://localhost:3000/goals', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,7 +52,7 @@ const App = () => {
 
   const updateGoal = async (id, updatedGoal) => {
     try {
-      const response = await fetch(`https://react-code-challen.vercel.app/goals/${id}`, {
+      const response = await fetch(`http://localhost:3000/goals/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedGoal),
@@ -68,7 +68,7 @@ const App = () => {
 
   const deleteGoal = async (id) => {
     try {
-      const response = await fetch(`https://react-code-challen.vercel.app/goals/${id}`, {
+      const response = await fetch(`http://localhost:3000/goals/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -84,7 +84,7 @@ const App = () => {
       const goal = goals.find((g) => g.id === id);
       if (!goal) throw new Error('Goal not found');
       const newSavedAmount = goal.savedAmount + parseFloat(amount);
-      const response = await fetch(`https://react-code-challen.vercel.app/goals/${id}`, {
+      const response = await fetch(`http://localhost:3000/goals/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ savedAmount: newSavedAmount }),

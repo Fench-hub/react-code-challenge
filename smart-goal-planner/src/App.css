@@ -8,7 +8,7 @@
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f7fa;
-  color: #333;
+  color: #8d2727;
   line-height: 1.6;
 }
 
@@ -17,14 +17,14 @@ body {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #020f03;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .app h1 {
   text-align: center;
-  color: #2c3e50;
+  color: #d4dbe2;
   margin-bottom: 20px;
   font-size: 2rem;
 }
@@ -33,12 +33,12 @@ body {
 .overview {
   margin-bottom: 20px;
   padding: 15px;
-  background-color: #e8f0fe;
+  background-color: #6c7688;
   border-radius: 6px;
 }
 
 .overview h2 {
-  color: #34495e;
+  color: #7f91a3;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
@@ -150,11 +150,11 @@ form button:hover {
 }
 
 .goal-item.completed {
-  border-left-color: #27ae60;
+  border-left-color: #8b320f;
 }
 
 .goal-item.warning {
-  border-left-color: #e67e22;
+  border-left-color: #ad5a12;
 }
 
 .goal-item.overdue {
@@ -175,22 +175,22 @@ form button:hover {
 }
 
 .goal-item button.edit {
-  background-color: #f1c40f;
+  background-color: #161615;
   color: #fff;
   margin-right: 5px;
 }
 
 .goal-item button.edit:hover {
-  background-color: #d4ac0d;
+  background-color: #1a1917;
 }
 
 .goal-item button.delete {
-  background-color: #c0392b;
+  background-color: #2b2525;
   color: #fff;
 }
 
 .goal-item button.delete:hover {
-  background-color: #a93226;
+  background-color: #181414;
 }
 
 /* Responsive design */
@@ -221,7 +221,7 @@ form button:hover {
 .progress-bar {
   width: 100%;
   height: 10px;
-  background-color: #e0e0e0;
+  background-color: #295020;
   border-radius: 5px;
   overflow: hidden;
   margin-top: 5px;

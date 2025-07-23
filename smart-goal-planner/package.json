@@ -3,23 +3,22 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://fench-hub.github.io/react-code-challenge", 
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build", 
-    "deploy": "gh-pages -d dist" 
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "cors": "^2.8.5",
     "json-server": "0.17.4",
-    "cors": "^2.8.5"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
-    "vite": "^4.3.9",
-    "gh-pages": "^x.y.z" 
+    "gh-pages": "^5.0.0",
+    "vite": "^7.0.5"
   }
 }
